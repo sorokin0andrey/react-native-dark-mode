@@ -1,31 +1,29 @@
 {
-	"private": true,
-	"workspaces": {
-		"packages": [
-			"example",
-			"library"
-		],
-		"nohoist": [
-			"**/react-native",
-			"**/react-native/**",
-			"**/react",
-			"**/react/**",
-			"**/react-native-dark-mode",
-			"**/react-native-dark-mode/**"
-		]
-	},
+	"name": "react-native-dark-mode",
+	"version": "0.2.2",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
+	"repository": "git@github.com:codemotionapps/react-native-dark-mode.git",
+	"author": "Dimitar Nestorov <opensource@dimitarnestorov.com> (https://dimitarnestorov.com)",
+	"homepage": "https://github.com/codemotionapps/react-native-dark-mode",
+	"description": "Detect dark mode in React Native",
+	"license": "MIT",
 	"scripts": {
-		"start": "yarn workspace example start",
-		"pretty": "yarn prettier --write '**/*.{js,ts,tsx}'"
+		"prepublishOnly": "yarn run clean && yarn run copy-readme && yarn run build",
+		"clean": "rimraf dist",
+		"copy-readme": "cp ../README.md ./",
+		"build": "tsc",
+		"watch": "yarn run build --watch"
 	},
-	"devDependencies": {
-		"@babel/core": "^7.4.5",
-		"@babel/runtime": "^7.4.5",
-		"@types/react-native": "^0.57.60",
-		"babel-plugin-module-resolver": "^3.2.0",
-		"metro-react-native-babel-preset": "^0.54.1",
-		"rimraf": "^2.6.3",
-		"typescript": "^3.5.1",
-		"prettier": "^2.0.4"
+	"peerDependencies": {
+		"react": "^16.8.3",
+		"react-native": "^0.59.9 || ^0.60.0 || ^0.61.0"
+	},
+	"dependencies": {
+		"@types/events": "*",
+		"@types/react": "*",
+		"@types/react-native": "*",
+		"events": "^3.0.0",
+		"toolkit.ts": "^0.0.2"
 	}
 }
