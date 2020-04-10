@@ -5,10 +5,12 @@ export const useDarkMode = () => {
 	const [colorSchemeAndroid, setColorSchemeAndroid] = useState(Appearance.getColorScheme())
 
 	useEffect(() => {
-		const currentModeListener = DeviceEventEmitter.addListener('currentModeChanged', (mode) => {
-			setColorSchemeAndroid(mode)
-		})
-		return currentModeListener.remove()
+		if (Platform.OS === 'android') {
+			const currentModeListener = DeviceEventEmitter.addListener('currentModeChanged', (mode) => {
+				setColorSchemeAndroid(mode)
+			})
+			return () => currentModeListener.remove()
+		}
 	}, [])
 
 	return Platform.OS === 'ios' ? colorScheme : colorSchemeAndroid
