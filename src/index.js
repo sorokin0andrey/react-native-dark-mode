@@ -1,4 +1,5 @@
-import { useColorScheme, Platform, useState, Appearance, useEffect, DeviceEventEmitter } from 'react-native'
+import { useState, useEffect } from 'react'
+import { useColorScheme, Platform, Appearance, DeviceEventEmitter } from 'react-native'
 
 export const useDarkMode = () => {
 	const colorScheme = useColorScheme()
